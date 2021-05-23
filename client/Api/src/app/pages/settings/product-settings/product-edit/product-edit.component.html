@@ -1,0 +1,60 @@
+<mat-card>
+    <mat-card-title align="center">Termék módosítása</mat-card-title>
+</mat-card>
+
+<form [formGroup]="productFormGroup" align="center" style="margin: 5%;">
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Termék neve</mat-label>
+            <input type="text" matInput formControlName="name">
+        </mat-form-field>
+        <div *ngIf="productFormGroup.controls.name.touched === true">
+            <mat-error *ngIf="productFormGroup.controls.name.hasError('required')">
+                A mező kitöltése kötelező!
+            </mat-error>
+            <mat-error *ngIf="productFormGroup.controls.name.hasError('maxlength')">
+                Túllépte a korlátot! A megadott input maximum 20 karakter lehet!
+            </mat-error>
+        </div>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Termék Kategóriája</mat-label>
+            <input type="text" matInput formControlName="category">
+        </mat-form-field>
+        <div *ngIf="productFormGroup.controls.category.touched === true">
+            <mat-error *ngIf="productFormGroup.controls.category.hasError('required')">
+                A mező kitöltése kötelező!
+            </mat-error>
+            <mat-error *ngIf="productFormGroup.controls.category.hasError('maxlength')">
+                Túllépte a korlátot! A megadott input maximum 20 karakter lehet!
+            </mat-error>
+        </div>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Termék Ára</mat-label>
+            <input type="number" matInput formControlName="price">
+        </mat-form-field>
+        <div *ngIf="productFormGroup.controls.price.touched === true">
+            <mat-error *ngIf="productFormGroup.controls.price.hasError('required')">
+                A mező kitöltése kötelező!
+            </mat-error>
+        </div>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Darabszám</mat-label>
+            <input type="number" matInput formControlName="quantity">
+        </mat-form-field>
+        <div *ngIf="productFormGroup.controls.quantity.touched === true">
+            <mat-error *ngIf="productFormGroup.controls.quantity.hasError('required')">
+                A mező kitöltése kötelező
+            </mat-error>
+        </div>
+    </div>
+    <div>
+        <button routerLink="/settings/product" mat-raised-button matDialogClose>Vissza</button>
+        <button color="primary" [disabled]="!productFormGroup.valid" (click)="editProduct()" mat-raised-button matDialogClose>Módosítás</button>
+    </div>
+</form>

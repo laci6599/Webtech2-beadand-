@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  margin: 2%;
+  font-size: 14px;
+  width: 10%;
+}
+
+.container {
+  width: 80%;
+  height: 100%;
+  background-color: whitesmoke;
+}
+
+mat-card {
+  width: 80%;
+  height: 100%;
+  background-color: whitesmoke;
+}
+
+.team-header-image {
+  background-size: cover;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}

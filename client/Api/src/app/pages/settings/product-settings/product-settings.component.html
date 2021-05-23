@@ -1,0 +1,72 @@
+<mat-toolbar color="primary">
+  <span class="example-spacer"></span>
+  <span> {{ user }} </span>
+  <button mat-icon-button class="example-icon" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div align="center">
+  <mat-card>
+    <div align="left">
+      <button mat-raised-button color="primary" (click)="createProduct()">Új termék</button>
+      <mat-form-field>
+        <mat-label>Szűrő</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Termék neve" #input>
+      </mat-form-field>
+    </div>
+    <mat-card-title>Termék kezelése</mat-card-title>
+  </mat-card>
+
+  <div align="center">
+
+    <div class="container">
+
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Termék neve </th>
+          <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Termék Kategóriája </th>
+          <td mat-cell *matCellDef="let element"> {{ element.category }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Termék ára </th>
+          <td mat-cell *matCellDef="let element"> {{ element.price }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Darabszám </th>
+          <td mat-cell *matCellDef="let element"> {{ element.quantity }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef> Módosítás </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button matTooltip="Módosítás" matTooltipPosition="above" (click)="editProduct(element)">
+              <mat-icon>settings</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef> Törlés </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button matTooltip="Törlés" matTooltipPosition="above" (click)="deleteProduct(element)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    </div>
+  </div>

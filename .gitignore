@@ -1,0 +1,5 @@
+client/Api/.gitignore
+client/Api/package-lock.json
+client/Api/node_modules
+package-lock.json
+/node_modules

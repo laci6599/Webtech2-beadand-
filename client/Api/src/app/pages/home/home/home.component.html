@@ -1,0 +1,66 @@
+<div align="center">
+
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Bejelentkezés">
+
+            <button mat-fab color="primary" style="margin: 5%;">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+
+            <form [formGroup]="loginGroup" class="form">
+
+                <mat-form-field floatLabel="never" class="form-element">
+                    <input type="text" matInput placeholder="Felhasználónév" formControlName="name">
+                    <mat-error *ngIf="!loginGroup.controls['name'].invalid">
+                        {{ getError('user') }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="never" class="form-element">
+                    <input type="password" matInput placeholder="Jelszó" formControlName="password">
+                    <mat-error *ngIf="!loginGroup.controls['password'].valid">
+                        {{ getError('pass') }}
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="form-element">
+                    <button mat-raised-button color="primary" type="submit" class="button"
+                        [disabled]="!loginGroup.valid" (click)="login()">Bejelentkezés</button>
+                </div>
+
+            </form>
+
+        </mat-tab>
+        <mat-tab label="Regisztráció">
+
+            <button mat-fab color="primary" style="margin: 5%;">
+                <mat-icon>manage_accounts</mat-icon>
+            </button>
+
+            <form [formGroup]="registerGroup" class="form">
+
+                <mat-form-field floatLabel="never" class="form-element">
+                    <input type="text" matInput placeholder="Felhasználónév" formControlName="name">
+                    <mat-error *ngIf="registerGroup.controls['name'].invalid">
+                        {{ getError('reg_user') }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="never" class="form-element">
+                    <input type="password" matInput placeholder="Jelszó" formControlName="password">
+                    <mat-error *ngIf="!registerGroup.controls['password'].valid">
+                        {{ getError('reg_pass') }}
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="form-element">
+                    <button mat-raised-button color="primary" type="submit" class="button"
+                        [disabled]="!registerGroup.valid" (click)="register()">Regisztráció</button>
+                </div>
+
+            </form>
+
+        </mat-tab>
+    </mat-tab-group>
+
+</div>
